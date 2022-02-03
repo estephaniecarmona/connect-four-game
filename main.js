@@ -21,10 +21,11 @@ function changeTurn(playerTurn) {
 function buildBoard(x, y) {
     
     var board = [];
-    for (var i = 0; i < x; i++) {
+    for (var i = 0; i < y; i++) {
         var boardY = [];
-        for (var j = 0; j < y; j++) {
-            boardY.push('⬜')
+        for (var j = 0; j < x; j++) {
+            // boardY.push('⬜')
+            boardY.push(` ${i},${j}`)
         }
         board.push(boardY)
     }
@@ -58,25 +59,36 @@ function drawBoard(board) {
 
 
 function convertMoveToCoords(move, board) {
-    return {x: 0, y: 0};
+    var boardLength = board[board.length - 1];
+    var boardString = board[0][board[0].length -1];
+
+    var xValue = board.length - 1;
+    var yValue = Number(move) - 1;
+    
+
+    return {x: xValue, y: yValue};
 
 }
 
-function saveMoveIntoBoard(move, board) {
-    return {x: 0, y: 0};
+function saveMoveIntoBoard(playerTurn, coords, board) {
+    board[coords.x][coords.y] = playerTurn[1];
+
+    console.log(board)
 }
 
-const mainBoard = buildBoard(6, 7)
+const mainBoard = buildBoard(3, 4)
 console.log(mainBoard)
 
 
 
 while (true) {
 
-    drawBoard(mainBoard)
+    drawBoard(mainBoard);
     const move = prompt(`player ${playerTurn[0]} turn:`);
     console.log(`move ${move}`);
+    convertMoveToCoords(move, mainBoard);
     var coords = convertMoveToCoords(move, mainBoard);
+    saveMoveIntoBoard(playerTurn, coords, mainBoard);
     playerTurn = changeTurn(playerTurn);
 
 }
