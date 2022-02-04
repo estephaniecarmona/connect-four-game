@@ -64,11 +64,20 @@ function convertMoveToCoords(move, board) {
 
     var xValue = board.length - 1;
     var yValue = Number(move) - 1;
+    var x = placeTheNumberAbove(move, board, xValue, yValue)
     
-
-    return {x: xValue, y: yValue};
+    return {x: x, y: yValue};
 
 }
+
+function placeTheNumberAbove(move, board, x, y) {
+    for ()
+    if ('⚪' === board[x][y]){
+       return x - 1
+    }
+    return x
+}
+
 
 function saveMoveIntoBoard(playerTurn, coords, board) {
     board[coords.x][coords.y] = playerTurn[1];
@@ -86,7 +95,6 @@ while (true) {
     drawBoard(mainBoard);
     const move = prompt(`player ${playerTurn[0]} turn:`);
     console.log(`move ${move}`);
-    convertMoveToCoords(move, mainBoard);
     var coords = convertMoveToCoords(move, mainBoard);
     saveMoveIntoBoard(playerTurn, coords, mainBoard);
     playerTurn = changeTurn(playerTurn);
