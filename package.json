@@ -6,6 +6,11 @@
   "author": "Estephanie Carmona",
   "license": "MIT",
   "dependencies": {
+    "jest": "^27.5.1",
     "prompt-sync": "^4.2.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
+
 }
